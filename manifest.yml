@@ -1,0 +1,10 @@
+applications:
+- name: crime-data-prototypes
+  buildpack: nodejs_buildpack
+  memory: 512M
+  host: crime-data-prototypes
+  domain: fr.cloud.gov
+env:
+  NODE_ENV: 'production'
+services:
+- crime-data-api-creds
