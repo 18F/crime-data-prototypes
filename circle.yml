@@ -23,3 +23,7 @@ deployment:
       - cf api $CF_API
       - cf auth $CF_USERNAME $CF_PASSWORD && cf target -o $CF_ORGANIZATION -s $CF_SPACE
       - cf zero-downtime-push $CF_APP -f manifest.yml -p .
+
+test:
+  override:
+    - echo "🚔📊↗️☁️"
