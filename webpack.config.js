@@ -2,10 +2,10 @@ var path = require('path')
 var webpack = require('webpack')
 
 var config = {
-  context: path.join(__dirname, 'src'),
+  context: path.join(__dirname, 'demos'),
   entry: {
-    demo: './demo/index.js',
-    ori: './ori-filter/index.js'
+    ori: './ori/index.js',
+    test: './test/index.js'
   },
   output: {
     filename: '[name].js',
@@ -13,7 +13,7 @@ var config = {
     publicPath: '/build'
   },
   devServer: {
-    contentBase: path.join(__dirname, 'src')
+    contentBase: path.join(__dirname, 'demos')
   },
   module: {
     rules: [
@@ -23,7 +23,8 @@ var config = {
         use: ['babel-loader']
       }
     ]
-  }
+  },
+  plugins: []
 }
 
 if (process.env.NODE_ENV === 'production') {
