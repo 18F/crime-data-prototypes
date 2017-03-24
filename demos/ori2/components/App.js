@@ -79,7 +79,7 @@ class App extends React.Component {
               <input
                 type="text"
                 className='mb2 col-12 field'
-                placeholder='Start typing...'
+                placeholder='Enter location or zip code'
                 value={search}
                 onChange={this.handleChange}
               />
