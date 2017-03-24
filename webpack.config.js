@@ -5,7 +5,7 @@ var config = {
   context: path.join(__dirname, 'demos'),
   entry: {
     ori: './ori/index.js',
-    test: './test/index.js'
+    ori2: './ori2/index.js'
   },
   output: {
     filename: '[name].js',
