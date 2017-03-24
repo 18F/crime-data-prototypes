@@ -1,11 +1,12 @@
+import axios from 'axios'
 import React from 'react'
 
 class App extends React.Component {
   state = { data: [], search: '' }
 
   componentDidMount() {
-    fetch('/data/ori_ny.json')
-      .then(response => response.json())
+    axios.get('/data/ori_ny.json')
+      .then(response => response.data)
       .then(data => this.setState({ data }))
       .catch(error => console.log(error))
   }

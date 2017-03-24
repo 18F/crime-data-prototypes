@@ -12,11 +12,12 @@
     "node": "6.9.x"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "basic-auth-connect": "^1.0.0",
     "cfenv": "^1.0.4",
+    "express": "^4.15.2",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "express": "^4.15.2"
+    "react-dom": "^15.4.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
