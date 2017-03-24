@@ -29,7 +29,7 @@ class App extends React.Component {
   }
 
   removeSelection = () => {
-    this.setState({ selected: null })
+    this.setState({ selected: null, search: '' })
   }
 
   render() {
@@ -108,6 +108,7 @@ class App extends React.Component {
           backgroundColor: '#f1f4f9',
           minHeight: 1000
         }}>
+          {isFetching ? 'ORI data loading...' : null}
         </div>
       </div>
     )
