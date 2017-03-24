@@ -1,24 +1,38 @@
 import React from 'react'
 
 class App extends React.Component {
-  state = {
-    entries: [1, 2, 3],
+  state = { data: [], search: '' }
+
+  componentDidMount() {
+    fetch('/data/ori_ny.json')
+      .then(response => response.json())
+      .then(data => this.setState({ data }))
+      .catch(error => console.log(error))
+  }
+
+  handleChange = e => {
+    this.setState({ search: e.target.value })
   }
 
   render() {
-    const { entries } = this.state
+    const { data, search } = this.state
+    const dataFiltered = data.filter(d => (
+      d['NAME'].includes(search.toUpperCase())
+    ))
 
     return (
-      <div>
-        <nav className="py2 bg-blue white">
-          <div className="container">
-            <h2 className="m0 h5 caps">scratchpad</h2>
-          </div>
-        </nav>
-        <div className='p2 container'>
-          <h1>hello, world</h1>
-          <p>{JSON.stringify(entries)}</p>
-        </div>
+      <div className='px2 py3 container'>
+        <input
+          type="text"
+          className='mb2 sm-col-5 field'
+          placeholder='Start typing...'
+          value={search}
+          onChange={this.handleChange}
+        />
+        <h2 className='mt0'>{dataFiltered.length} results</h2>
+        {dataFiltered.slice(0, 100).map((d, i) => (
+          <p key={i}>{JSON.stringify(d)}</p>
+        ))}
       </div>
     )
   }

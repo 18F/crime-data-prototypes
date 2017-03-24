@@ -13,7 +13,7 @@ var config = {
     publicPath: '/build'
   },
   devServer: {
-    contentBase: path.join(__dirname, 'demos')
+    contentBase: __dirname
   },
   module: {
     rules: [
