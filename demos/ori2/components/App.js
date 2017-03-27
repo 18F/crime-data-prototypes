@@ -54,10 +54,17 @@ class App extends React.Component {
           <select className='mt2 mb3 col-12 field'>
             <option>Ohio</option>
           </select>
-          <p className='mb1 h5 italic'>
-            Enter a city, county, or zip code to
-            select a location within the state
-          </p>
+          {(showOris && !selected) ? (
+            <p className='mb1 h5 italic'>
+              There are <strong>{dataFiltered.length}</strong> locations
+              within your search. Select one to view.
+            </p>
+          ) : (
+            <p className='mb1 h5 italic'>
+              Enter a city, county, or zip code to
+              select a location within the state
+            </p>
+          )}
           {selected ? (
             <div className="flex mb2">
               <input
@@ -109,6 +116,12 @@ class App extends React.Component {
           minHeight: 1000
         }}>
           {isFetching ? 'ORI data loading...' : null}
+          {selected && (
+            <div>
+              <h2 className='mt0 mb2'>{selected['NAME']}</h2>
+              <div className='p3 bg-white' style={{ height: 350 }} />
+            </div>
+          )}
         </div>
       </div>
     )
