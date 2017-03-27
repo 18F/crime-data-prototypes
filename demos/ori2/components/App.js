@@ -15,7 +15,10 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/data/ori.json')
       .then(response => response.data)
-      .then(data => this.setState({ data, isFetching: false }))
+      .then(data => this.setState({
+        data: data.filter(d => d['ORI9'].slice(0, 2) === 'OH'),
+        isFetching: false
+      }))
       .catch(error => console.log(error))
   }
 
