@@ -3,6 +3,7 @@ import React from 'react'
 
 import Table from './Table'
 
+const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 
 class App extends React.Component {
   state = {
@@ -48,12 +49,22 @@ class App extends React.Component {
       return words.includes(searchUpper)
     })
     const showOris = searchUpper.length >= 3 && dataFiltered.length > 0
+    const [x, y] = [rand(60, 160), rand(40, 120)]
 
     return (
       <div className='clearfix'>
         <div className='sm-col sm-col-3 p3'>
           <h3 className='mt0'>Location</h3>
-          <img src='ohio.png' />
+          <div className='relative'>
+            <img src='ohio.png' />
+            {selected && (
+              <img
+                className='absolute animated bounce'
+                src='pin.svg'
+                style={{ left: x, top: y }}
+              />
+            )}
+          </div>
           <select className='mt2 mb3 col-12 field'>
             <option>Ohio</option>
           </select>
