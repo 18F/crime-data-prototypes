@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "babel-polyfill": "^6.23.0",
     "basic-auth-connect": "^1.0.0",
     "cfenv": "^1.0.4",
     "express": "^4.15.2",

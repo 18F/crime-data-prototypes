@@ -5,6 +5,12 @@ import Table from './Table'
 
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 
+const imgs = {
+  trend: 'Trend, no NIBRS',
+  table: 'Table, no NIBRS',
+  details: 'NIBRS charts',
+}
+
 class App extends React.Component {
   state = {
     data: [],
@@ -49,6 +55,7 @@ class App extends React.Component {
       return words.includes(searchUpper)
     })
     const showOris = searchUpper.length >= 3 && dataFiltered.length > 0
+    const showImg = Object.keys(imgs).includes(search)
     const [x, y] = [rand(60, 160), rand(40, 120)]
 
     return (
@@ -125,16 +132,13 @@ class App extends React.Component {
             </div>
           )}
         </div>
-        <div className='sm-col sm-col-9 p3' style={{
+        <div className='sm-col sm-col-9' style={{
           backgroundColor: '#f1f4f9',
           minHeight: 1000
         }}>
           {isFetching ? 'ORI data loading...' : null}
-          {selected && (
-            <div>
-              <h2 className='mt0 mb2'>{selected['NAME']}</h2>
-              <div className='p3 bg-white' style={{ height: 350 }} />
-            </div>
+          {showImg && (
+            <img src={`${imgs[search]}.png`} />
           )}
         </div>
       </div>
