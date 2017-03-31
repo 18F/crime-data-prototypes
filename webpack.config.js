@@ -4,6 +4,7 @@ var webpack = require('webpack')
 var config = {
   context: path.join(__dirname, 'demos'),
   entry: {
+    cities: './cities/index.js',
     ori: './ori/index.js',
     ori2: './ori2/index.js'
   },
@@ -21,6 +22,10 @@ var config = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader']
+      },
+      {
+        test: /\.json$/,
+        use: 'json-loader'
       }
     ]
   },
