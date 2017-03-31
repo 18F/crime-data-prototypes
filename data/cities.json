@@ -1,0 +1,401 @@
+[
+  {
+    "name": "Helena",
+    "state": "Montana",
+    "pop": 38725,
+    "lat": 46.5927490428,
+    "lng": -112.035290977
+  },
+  {
+    "name": "Bismarck",
+    "state": "North Dakota",
+    "pop": 63871,
+    "lat": 46.8083172802,
+    "lng": -100.783316286
+  },
+  {
+    "name": "Boise",
+    "state": "Idaho",
+    "pop": 338071,
+    "lat": 43.6085901073,
+    "lng": -116.22748987
+  },
+  {
+    "name": "San Jose",
+    "state": "California",
+    "pop": 1668000,
+    "lat": 37.2999829295,
+    "lng": -121.849989056
+  },
+  {
+    "name": "Sacramento",
+    "state": "California",
+    "pop": 1604000,
+    "lat": 38.5750213817,
+    "lng": -121.470038088
+  },
+  {
+    "name": "Las Vegas",
+    "state": "Nevada",
+    "pop": 1823000,
+    "lat": 36.2099977814,
+    "lng": -115.220006146
+  },
+  {
+    "name": "Santa Fe",
+    "state": "New Mexico",
+    "pop": 92681,
+    "lat": 35.6869289338,
+    "lng": -105.937239422
+  },
+  {
+    "name": "Portland",
+    "state": "Oregon",
+    "pop": 1875000,
+    "lat": 45.5200238231,
+    "lng": -122.679990074
+  },
+  {
+    "name": "Salt Lake City",
+    "state": "Utah",
+    "pop": 966000,
+    "lat": 40.7750162954,
+    "lng": -111.930051922
+  },
+  {
+    "name": "Cheyenne",
+    "state": "Wyoming",
+    "pop": 72927,
+    "lat": 41.1400069367,
+    "lng": -104.819710736
+  },
+  {
+    "name": "Des Moines",
+    "state": "Iowa",
+    "pop": 380655,
+    "lat": 41.5799800812,
+    "lng": -93.6199809181
+  },
+  {
+    "name": "Omaha",
+    "state": "Nebraska",
+    "pop": 877110,
+    "lat": 41.2400008332,
+    "lng": -96.0099900734
+  },
+  {
+    "name": "Oklahoma City",
+    "state": "Oklahoma",
+    "pop": 788000,
+    "lat": 35.4700429474,
+    "lng": -97.5186835142
+  },
+  {
+    "name": "Pierre",
+    "state": "South Dakota",
+    "pop": 13879,
+    "lat": 44.3683370148,
+    "lng": -100.350552004
+  },
+  {
+    "name": "San Antonio",
+    "state": "Texas",
+    "pop": 1473000,
+    "lat": 29.4873331899,
+    "lng": -98.5073053404
+  },
+  {
+    "name": "Jackson",
+    "state": "Mississippi",
+    "pop": 250902,
+    "lat": 32.298815327,
+    "lng": -90.1849967873
+  },
+  {
+    "name": "Raleigh",
+    "state": "North Carolina",
+    "pop": 1163515,
+    "lat": 35.8187813507,
+    "lng": -78.6446934425
+  },
+  {
+    "name": "Cleveland",
+    "state": "Ohio",
+    "pop": 1890000,
+    "lat": 41.4699867951,
+    "lng": -81.6949982114
+  },
+  {
+    "name": "Cincinnati",
+    "state": "Ohio",
+    "pop": 1636000,
+    "lat": 39.161884785,
+    "lng": -84.4569226499
+  },
+  {
+    "name": "Nashville",
+    "state": "Tennessee",
+    "pop": 877000,
+    "lat": 36.1699743846,
+    "lng": -86.7799849871
+  },
+  {
+    "name": "Memphis",
+    "state": "Tennessee",
+    "pop": 1081000,
+    "lat": 35.1199867951,
+    "lng": -89.9999951597
+  },
+  {
+    "name": "Norfolk",
+    "state": "Virginia",
+    "pop": 1047869,
+    "lat": 36.8499587189,
+    "lng": -76.280005739
+  },
+  {
+    "name": "Milwaukee",
+    "state": "Wisconsin",
+    "pop": 1388000,
+    "lat": 43.0526550487,
+    "lng": -87.9199670835
+  },
+  {
+    "name": "Buffalo",
+    "state": "New York",
+    "pop": 1016000,
+    "lat": 42.8799782502,
+    "lng": -78.8800020769
+  },
+  {
+    "name": "Pittsburgh",
+    "state": "Pennsylvania",
+    "pop": 1838000,
+    "lat": 40.4299985952,
+    "lng": -79.999985394
+  },
+  {
+    "name": "Kodiak",
+    "state": "Alaska",
+    "pop": 9461,
+    "lat": 57.7899983918,
+    "lng": -152.406986941
+  },
+  {
+    "name": "Cold Bay",
+    "state": "Alaska",
+    "pop": 200,
+    "lat": 55.2000014436,
+    "lng": -162.715091595
+  },
+  {
+    "name": "Bethel",
+    "state": "Alaska",
+    "pop": 6228,
+    "lat": 60.7933034456,
+    "lng": -161.755796145
+  },
+  {
+    "name": "Point Hope",
+    "state": "Alaska",
+    "pop": 461,
+    "lat": 68.347726053,
+    "lng": -166.808020062
+  },
+  {
+    "name": "Barrow",
+    "state": "Alaska",
+    "pop": 4336,
+    "lat": 71.290569681,
+    "lng": -156.788579958
+  },
+  {
+    "name": "Nome",
+    "state": "Alaska",
+    "pop": 3485,
+    "lat": 64.5061000764,
+    "lng": -165.406374351
+  },
+  {
+    "name": "Valdez",
+    "state": "Alaska",
+    "pop": 4036,
+    "lat": 61.1359957063,
+    "lng": -146.348286989
+  },
+  {
+    "name": "Juneau",
+    "state": "Alaska",
+    "pop": 30711,
+    "lat": 58.3141266064,
+    "lng": -134.419996991
+  },
+  {
+    "name": "Fairbanks",
+    "state": "Alaska",
+    "pop": 56993,
+    "lat": 64.8369842724,
+    "lng": -147.710658612
+  },
+  {
+    "name": "Prudhoe Bay",
+    "state": "Alaska",
+    "pop": 2500,
+    "lat": 70.2921810091,
+    "lng": -148.669359784
+  },
+  {
+    "name": "Minneapolis",
+    "state": "Minnesota",
+    "pop": 2616000,
+    "lat": 44.9799792674,
+    "lng": -93.2517863381
+  },
+  {
+    "name": "Honolulu",
+    "state": "Hawaii",
+    "pop": 786000,
+    "lat": 21.3068764435,
+    "lng": -157.857997886
+  },
+  {
+    "name": "Seattle",
+    "state": "Washington",
+    "pop": 3074000,
+    "lat": 47.5700020539,
+    "lng": -122.339984987
+  },
+  {
+    "name": "Phoenix",
+    "state": "Arizona",
+    "pop": 3551000,
+    "lat": 33.5399798778,
+    "lng": -112.069991701
+  },
+  {
+    "name": "San Diego",
+    "state": "California",
+    "pop": 2916000,
+    "lat": 32.8200238231,
+    "lng": -117.17998987
+  },
+  {
+    "name": "St. Louis",
+    "state": "Missouri",
+    "pop": 2199000,
+    "lat": 38.6350177196,
+    "lng": -90.2399805112
+  },
+  {
+    "name": "New Orleans",
+    "state": "Louisiana",
+    "pop": 785000,
+    "lat": 29.9950024607,
+    "lng": -90.03996688
+  },
+  {
+    "name": "Dallas",
+    "state": "Texas",
+    "pop": 4798000,
+    "lat": 32.8200238231,
+    "lng": -96.8400169289
+  },
+  {
+    "name": "Boston",
+    "state": "Massachusetts",
+    "pop": 4467000,
+    "lat": 42.3299601431,
+    "lng": -71.0700136736
+  },
+  {
+    "name": "Tampa",
+    "state": "Florida",
+    "pop": 2314000,
+    "lat": 27.9469879344,
+    "lng": -82.4586208514
+  },
+  {
+    "name": "Philadelphia",
+    "state": "Pennsylvania",
+    "pop": 5492000,
+    "lat": 39.9999731639,
+    "lng": -75.1699959734
+  },
+  {
+    "name": "Detroit",
+    "state": "Michigan",
+    "pop": 4101000,
+    "lat": 42.3299601431,
+    "lng": -83.0800557879
+  },
+  {
+    "name": "Anchorage",
+    "state": "Alaska",
+    "pop": 260283,
+    "lat": 61.2199699088,
+    "lng": -149.900214886
+  },
+  {
+    "name": "San Francisco",
+    "state": "California",
+    "pop": 3450000,
+    "lat": 37.7400077505,
+    "lng": -122.459977663
+  },
+  {
+    "name": "Denver",
+    "state": "Colorado",
+    "pop": 2313000,
+    "lat": 39.7391880484,
+    "lng": -104.984015952
+  },
+  {
+    "name": "Houston",
+    "state": "Texas",
+    "pop": 4459000,
+    "lat": 29.8199743846,
+    "lng": -95.3399792905
+  },
+  {
+    "name": "Miami",
+    "state": "Florida",
+    "pop": 5585000,
+    "lat": 25.7876106964,
+    "lng": -80.2241060808
+  },
+  {
+    "name": "Atlanta",
+    "state": "Georgia",
+    "pop": 4506000,
+    "lat": 33.830013854,
+    "lng": -84.3999493833
+  },
+  {
+    "name": "Chicago",
+    "state": "Illinois",
+    "pop": 8990000,
+    "lat": 41.8299906607,
+    "lng": -87.7500549741
+  },
+  {
+    "name": "Los Angeles",
+    "state": "California",
+    "pop": 12500000,
+    "lat": 33.9899782502,
+    "lng": -118.179980511
+  },
+  {
+    "name": "Washington, D.C.",
+    "state": "District of Columbia",
+    "pop": 4338000,
+    "lat": 38.8995493765,
+    "lng": -77.0094185808
+  },
+  {
+    "name": "New York",
+    "state": "New York",
+    "pop": 19040000,
+    "lat": 40.749979064,
+    "lng": -73.9800169288
+  }
+]
