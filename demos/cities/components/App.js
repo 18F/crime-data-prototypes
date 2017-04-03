@@ -2,25 +2,61 @@ import React from 'react'
 
 import Map from './Map'
 
+const stateNames = [
+  "Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut",
+  "Delaware","District of Columbia","Florida","Georgia","Hawaii","Idaho",
+  "Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland",
+  "Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana",
+  "Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York",
+  "North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania",
+  "Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah",
+  "Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming",
+]
+const cityNames = [
+  "Atlanta, Georgia","Boston, Massachusetts","Buffalo, New York","Chicago, Illinois",
+  "Cincinnati, Ohio","Cleveland, Ohio","Dallas, Texas","Denver, Colorado",
+  "Detroit, Michigan","Houston, Texas","Las Vegas, Nevada","Los Angeles, California",
+  "Memphis, Tennessee","Miami, Florida","Milwaukee, Wisconsin","Minneapolis, Minnesota",
+  "New York, New York","Norfolk, Virginia","Philadelphia, Pennsylvania",
+  "Phoenix, Arizona","Pittsburgh, Pennsylvania","Portland, Oregon",
+  "Raleigh, North Carolina","Sacramento, California","San Antonio, Texas",
+  "San Diego, California","San Francisco, California","San Jose, California",
+  "Seattle, Washington","St. Louis, Missouri","Tampa, Florida",
+  "Washington, D.C., District of Columbia"
+]
+
 class App extends React.Component {
+  state = {
+    place: '',
+  }
+
+  handleChange = e => {
+    this.setState({ place: e.target.value })
+  }
+
+  updatePlace = place => {
+    this.setState({ place })
+  }
+
   render() {
+    const { place } = this.state
+
     return (
       <div className='container p2' style={{ maxWidth: 900 }}>
         <h1 className='mb3'>Explore by location and type of crime</h1>
         <div className='clearfix mxn2'>
           <div className='sm-col sm-col-4 px2'>
-            <select className='mb1 sm-m0 col-12 field' defaultValue=''>
+            <select
+              className='mb1 sm-m0 col-12 field'
+              onChange={this.handleChange}
+              value={place}
+            >
               <option value='' disabled>Location</option>
               <optgroup label='States'>
-                <option>Alaska</option>
-                <option>Alabama</option>
-                <option>Arkansas</option>
+                {stateNames.map(s => <option key={s}>{s}</option>)}
               </optgroup>
               <optgroup label='Cities'>
-                <option>Atlanta, Georgia</option>
-                <option>Boston, Massachusetts</option>
-                <option>Chicago, Illinois</option>
-                <option>Cincinnati, Ohio</option>
+                {cityNames.map(c => <option key={c}>{c}</option>)}
               </optgroup>
             </select>
           </div>
@@ -44,10 +80,13 @@ class App extends React.Component {
             </select>
           </div>
           <div className='sm-col sm-col-4 px2'>
-            <button className='mb1 sm-m0 btn btn-primary bg-navy col-12'>Submit</button>
+            <button className='mb1 sm-m0 btn btn-primary bg-navy col-12'>View results</button>
           </div>
         </div>
-        <Map />
+        <Map
+          selected={place}
+          updatePlace={this.updatePlace}
+        />
       </div>
     )
   }

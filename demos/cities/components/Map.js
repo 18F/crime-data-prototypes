@@ -16,9 +16,9 @@ class Map extends React.Component {
       .then(response => { this.setState({ usa: response.data }) })
   }
 
-  rememberValue = id => e => {
+  rememberValue = name => e => {
     this.setState({
-      hover: { value: id, position: { x: e.pageX, y: e.pageY } },
+      hover: { value: name, position: { x: e.pageX, y: e.pageY } },
     })
   }
 
@@ -26,8 +26,12 @@ class Map extends React.Component {
     this.setState({ hover: null })
   }
 
+  clickHandler = name => e => {
+    this.props.updatePlace(name)
+  }
+
   render() {
-    const { selected, usCounty, usCountyUpdate } = this.props
+    const { selected } = this.props
     const { hover, usa } = this.state
 
     if (!usa) return null
@@ -38,12 +42,11 @@ class Map extends React.Component {
     const meshed = mesh(usa, usa.objects.states, (a, b) => (a !== b))
 
     const geoStates = feature(usa, usa.objects.states).features
-    const active = geoStates.find(s => (s.properties.name === selected))
-
     const geoCities = feature(usa, usa.objects.places).features
     const citiesFiltered = geoCities.filter(c => c.properties.pop > 1000000)
 
     window.cities = citiesFiltered
+    window.states = geoStates
 
     return (
       <div>
@@ -58,8 +61,9 @@ class Map extends React.Component {
                 <path
                   key={i}
                   d={path(d)}
-                  fill={d.properties.name === selected || !active ? '#95aabc' : '#eff4f9'}
+                  fill={d.properties.name === selected ? '#ff5e50' : '#95aabc'}
                   pointerEvents='all'
+                  onClick={this.clickHandler(d.properties.name)}
                   onMouseOver={this.rememberValue(d.properties.name)}
                   onMouseMove={this.rememberValue(d.properties.name)}
                   onMouseOut={this.forgetValue}
@@ -76,7 +80,7 @@ class Map extends React.Component {
             </g>
             <g className='cities'>
               {citiesFiltered.map((d, i) => {
-                const info = d.properties
+                const name = `${d.properties.name}, ${d.properties.state}`
                 return (
                   <circle
                     key={i}
@@ -86,7 +90,8 @@ class Map extends React.Component {
                     stroke='#fff'
                     strokeWidth='.5'
                     pointerEvents='all'
-                    onMouseOver={this.rememberValue(`${info.name}, ${info.state}`)}
+                    onClick={this.clickHandler(name)}
+                    onMouseOver={this.rememberValue(name)}
                     onMouseOut={this.forgetValue}
                   />
                 )
