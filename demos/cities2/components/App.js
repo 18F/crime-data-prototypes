@@ -2,28 +2,18 @@ import React from 'react'
 
 import Map from './Map'
 
-const stateNames = [
-  "Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut",
-  "Delaware","District of Columbia","Florida","Georgia","Hawaii","Idaho",
-  "Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland",
-  "Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana",
-  "Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York",
-  "North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania",
-  "Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah",
-  "Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming",
+
+const optionData = [
+  {'state': 'Alabama', 'cities': []},
+  {'state': 'Alaska', 'cities': []},
+  {'state': 'California', 'cities': [
+    'Los Angeles', 'Sacramento', 'San Diego',
+    'San Francisco', 'San Jose',
+  ]},
+  {'state': 'Georgia', 'cities': ['Atlanta']},
+  {'state': 'Texas', 'cities': ['Dallas', 'Houston', 'San Antonio']},
 ]
-const cityNames = [
-  "Atlanta, Georgia","Boston, Massachusetts","Buffalo, New York","Chicago, Illinois",
-  "Cincinnati, Ohio","Cleveland, Ohio","Dallas, Texas","Denver, Colorado",
-  "Detroit, Michigan","Houston, Texas","Las Vegas, Nevada","Los Angeles, California",
-  "Memphis, Tennessee","Miami, Florida","Milwaukee, Wisconsin","Minneapolis, Minnesota",
-  "New York, New York","Norfolk, Virginia","Philadelphia, Pennsylvania",
-  "Phoenix, Arizona","Pittsburgh, Pennsylvania","Portland, Oregon",
-  "Raleigh, North Carolina","Sacramento, California","San Antonio, Texas",
-  "San Diego, California","San Francisco, California","San Jose, California",
-  "Seattle, Washington","St. Louis, Missouri","Tampa, Florida",
-  "Washington, D.C., District of Columbia"
-]
+
 
 class App extends React.Component {
   state = {
@@ -41,6 +31,17 @@ class App extends React.Component {
   render() {
     const { place } = this.state
 
+    let options = []
+    optionData.forEach(d => {
+      options.push(<option key={d.state} value={d.state}>{d.state}</option>)
+      d.cities.forEach(city => {
+        const display = `${city}, ${d.state}`
+        options.push(
+          <option key={display} value={display}>&nbsp;&nbsp;&nbsp;{city}</option>
+        )
+      })
+    })
+
     return (
       <div className='container px2' style={{ maxWidth: 800 }}>
         <h1 className='mb3'>Explore by location and type of crime</h1>
@@ -52,12 +53,7 @@ class App extends React.Component {
               value={place}
             >
               <option value='' disabled>Select a state or city</option>
-              <optgroup label='States'>
-                {stateNames.map(s => <option key={s}>{s}</option>)}
-              </optgroup>
-              <optgroup label='Cities'>
-                {cityNames.map(c => <option key={c}>{c}</option>)}
-              </optgroup>
+              {options}
             </select>
           </div>
           <div className='sm-col sm-col-4 px2'>

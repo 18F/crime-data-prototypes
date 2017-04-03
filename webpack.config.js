@@ -5,6 +5,7 @@ var config = {
   context: path.join(__dirname, 'demos'),
   entry: {
     cities: './cities/index.js',
+    cities2: './cities2/index.js',
     ori: './ori/index.js',
     ori2: './ori2/index.js'
   },
