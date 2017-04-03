@@ -3,7 +3,7 @@ import { geoAlbersUsa, geoPath } from 'd3-geo'
 import React from 'react'
 import { feature, mesh } from 'topojson'
 
-import Hint from './Hint'
+import Hint from './Hint2'
 
 class Map extends React.Component {
   constructor(props) {
