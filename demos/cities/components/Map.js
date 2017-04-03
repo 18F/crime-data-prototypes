@@ -49,7 +49,7 @@ class Map extends React.Component {
     window.states = geoStates
 
     return (
-      <div>
+      <div className='md-col-11 mx-auto'>
         <svg
           className='pointer'
           preserveAspectRatio='xMidYMid'
@@ -85,7 +85,7 @@ class Map extends React.Component {
                   <circle
                     key={i}
                     transform={`translate(${projection(d.geometry.coordinates)})`}
-                    r={name === selected ? 5 : 2}
+                    r={name === selected ? 5 : 2.5}
                     fill={name === selected ? '#ff5e50' : '#284152'}
                     stroke='#fff'
                     strokeWidth='.5'

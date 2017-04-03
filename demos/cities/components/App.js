@@ -42,7 +42,7 @@ class App extends React.Component {
     const { place } = this.state
 
     return (
-      <div className='container p2' style={{ maxWidth: 900 }}>
+      <div className='container px2' style={{ maxWidth: 800 }}>
         <h1 className='mb3'>Explore by location and type of crime</h1>
         <div className='clearfix mxn2'>
           <div className='sm-col sm-col-4 px2'>
