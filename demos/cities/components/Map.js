@@ -85,8 +85,8 @@ class Map extends React.Component {
                   <circle
                     key={i}
                     transform={`translate(${projection(d.geometry.coordinates)})`}
-                    r='2'
-                    fill='#284152'
+                    r={name === selected ? 5 : 2}
+                    fill={name === selected ? '#ff5e50' : '#284152'}
                     stroke='#fff'
                     strokeWidth='.5'
                     pointerEvents='all'
