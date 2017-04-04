@@ -170,10 +170,7 @@ const keysWithSlugs = [
 class Chart extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { hover: null, svgParentWidth: null }
-    this.getDimensions = ::this.getDimensions
-    this.forgetValue = ::this.forgetValue
-    this.rememberValue = ::this.rememberValue
+    this.state = { svgParentWidth: null }
   }
 
   componentDidMount() {
@@ -185,27 +182,32 @@ class Chart extends React.Component {
     window.removeEventListener('resize', this.getDimensions)
   }
 
-  getDimensions() {
+  getDimensions = () => {
     if (this.svgParent) {
       this.setState({ svgParentWidth: this.svgParent.clientWidth })
     }
   }
 
-  forgetValue() {
-    this.setState({ hover: null })
-  }
-
-  rememberValue(e) {
+  rememberValue = (data, x, width) => e => {
     // get mouse x position, relative to container
     const node = e.target
     const rect = node.getBoundingClientRect()
     const xRel = e.clientX - rect.left - node.clientLeft
+    const hover = { x: xRel / rect.width }
 
-    this.setState({ hover: { x: xRel / rect.width } })
+    const bisectDate = bisector(d => d.date).left
+    const x0 = x.invert(hover.x * width)
+    const i = bisectDate(data, x0, 1)
+    const [d0, d1] = [data[i - 1], data[i]]
+
+    if (d0 && d1) {
+      const active = (x0 - d0.date > d1.date - x0) ? d1 : d0
+      this.props.updateYear(active.year)
+    }
   }
 
   render() {
-    const { crime, colors, size, isMain } = this.props
+    const { crime, colors, size, isMain, year } = this.props
     const { hover, svgParentWidth } = this.state
 
     const color = scaleOrdinal(colors)
@@ -259,7 +261,7 @@ class Chart extends React.Component {
         .x(d => x(d.date))
         .y(d => y(d.value.rate))
 
-    let active = dataClean[dataClean.length - 1]
+    let active = dataClean.find(d => d.year === year)
     if (hover) {
       const bisectDate = bisector(d => d.date).left
       const x0 = x.invert(hover.x * width)
@@ -295,6 +297,26 @@ class Chart extends React.Component {
           keys={keysWithSlugs}
           isMain={isMain}
         />
+        {isMain && (
+          <select
+            className='mb3 field bg-navy white'
+            style={{ minWidth: 160 }}
+            onChange={e => this.props.updateYear(Number(e.target.value))}
+            value={year}
+          >
+            <option>2004</option>
+            <option>2005</option>
+            <option>2006</option>
+            <option>2007</option>
+            <option>2008</option>
+            <option>2009</option>
+            <option>2010</option>
+            <option>2011</option>
+            <option>2012</option>
+            <option>2013</option>
+            <option>2014</option>
+          </select>
+        )}
         <div
           className='col-12'
           ref={ref => this.svgParent = ref}
@@ -326,15 +348,13 @@ class Chart extends React.Component {
                 height={height}
                 fill='none'
                 pointerEvents='all'
-                onMouseMove={this.rememberValue}
-                onMouseOut={this.forgetValue}
+                onMouseMove={this.rememberValue(dataClean, x, width)}
               />
             </g>
           </svg>
         </div>
-        <div className='my1 fs-10 sm-fs-12 monospace center'>
-          <div className='bold'>TODO rate per 100,000 people</div>
-          <div className='italic'>(Does not include estimates)</div>
+        <div className='mt1 h6 monospace center'>
+          <div className='bold monospace'>Rate per 100,000 people</div>
         </div>
       </div>
     )

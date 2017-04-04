@@ -5,11 +5,11 @@ import Chart from './Chart'
 
 class App extends React.Component {
   state = {
-    year: null,
+    year: 2013,
   }
 
-  handleChange = e => {
-    this.setState({ place: e.target.value })
+  updateYear = year => {
+    this.setState({ year })
   }
 
   render() {
@@ -17,22 +17,43 @@ class App extends React.Component {
 
     return (
       <div className='container px2' style={{ maxWidth: 800 }}>
-        <h1 className='mb3 border-bottom'>TODO</h1>
-        <Chart crime='foo' isMain />
+        <h1 className='mb3 border-bottom'>Chicago</h1>
+        <Chart
+          isMain
+          crime='foo'
+          year={year}
+          updateYear={this.updateYear}
+        />
         <div className='clearfix mxn2'>
           <div className='sm-col sm-col-6 px2'>
-            <Chart crime='foo' />
+            <Chart
+              crime='foo'
+              year={year}
+              updateYear={this.updateYear}
+            />
           </div>
           <div className='sm-col sm-col-6 px2'>
-            <Chart crime='foo' />
+            <Chart
+              crime='foo'
+              year={year}
+              updateYear={this.updateYear}
+            />
           </div>
         </div>
         <div className='clearfix mxn2'>
           <div className='sm-col sm-col-6 px2'>
-            <Chart crime='foo' />
+            <Chart
+              crime='foo'
+              year={year}
+              updateYear={this.updateYear}
+            />
           </div>
           <div className='sm-col sm-col-6 px2'>
-            <Chart crime='foo' />
+            <Chart
+              crime='foo'
+              year={year}
+              updateYear={this.updateYear}
+            />
           </div>
         </div>
       </div>

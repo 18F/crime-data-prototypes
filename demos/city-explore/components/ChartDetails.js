@@ -21,7 +21,7 @@ const ChartDetails = ({ colors, crime, data, keys, isMain }) => {
   const comparison = getComparison({ place: slug, data })
   const rate = data[slug].rate
   const year = data.date.getFullYear()
-  const highlight = v => <span className='bold blue'>{v}</span>
+  const highlight = v => <span className='bold navy'>{v}</span>
 
   return (
     <div className='mb2 lg-flex'>
@@ -29,7 +29,9 @@ const ChartDetails = ({ colors, crime, data, keys, isMain }) => {
         <div className='flex-auto'>
           <h4 className='mt0 mb1 fs-18 sans-serif'>{year}</h4>
           <p className='mb1 lg-m0 lg-pr4 lg-mh-72p fs-14 sm-fs-16'>
-            TODO...
+            Chicago's {crime} rate was lower than that of the United States, and
+            in {highlight(year)} was {highlight(formatRate(rate))} incidents
+            per 100,000 people.
           </p>
         </div>
       )}
