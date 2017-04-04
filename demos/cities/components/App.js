@@ -62,7 +62,7 @@ class App extends React.Component {
           </div>
           <div className='sm-col sm-col-4 px2'>
             <select className='mb1 sm-m0 col-12 field' defaultValue=''>
-              <option value='' disabled>Crime type</option>
+              <option value='' disabled>Select a crime type</option>
               <optgroup label='Violent Crime'>
                 <option value='violent-crime'>All Violent Crime</option>
                 <option value='homicide'>Homicide</option>

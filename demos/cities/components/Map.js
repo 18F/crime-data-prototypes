@@ -60,6 +60,7 @@ class Map extends React.Component {
               {geoStates.map((d, i) => (
                 <path
                   key={i}
+                  className='state'
                   d={path(d)}
                   fill={d.properties.name === selected ? '#ff5e50' : '#95aabc'}
                   pointerEvents='all'
