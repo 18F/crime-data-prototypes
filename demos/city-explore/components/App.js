@@ -17,7 +17,7 @@ class App extends React.Component {
 
     return (
       <div className='container px2' style={{ maxWidth: 800 }}>
-        <h1 className='mb3 border-bottom'>Chicago</h1>
+        <h1 className='mb3 border-bottom'>Chicago, Illinois</h1>
         <Chart
           isMain
           crime='foo'

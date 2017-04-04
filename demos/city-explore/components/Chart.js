@@ -289,7 +289,7 @@ class Chart extends React.Component {
     )
 
     return (
-      <div className='px2 py3 sm-p4 bg-white'>
+      <div className='mb3 px2 py3 sm-p4 bg-white'>
         <ChartDetails
           colors={colors}
           crime={crime}
