@@ -1,7 +1,14 @@
 import React from 'react'
 
 import Chart from './Chart'
+import dataViolentCrime from '../data/violent-crime.json'
+import dataHomicide from '../data/homicide.json'
+import dataRape from '../data/rape.json'
+import dataRobbery from '../data/robbery.json'
+import dataAggAssault from '../data/aggravated-assault.json'
 
+
+const keys = ['Chicago', 'Illinois', 'United States']
 
 class App extends React.Component {
   state = {
@@ -31,6 +38,8 @@ class App extends React.Component {
             <Chart
               isMain
               crime='violent crime'
+              data={dataViolentCrime}
+              keys={keys}
               year={year}
               updateYear={this.updateYear}
               title='Violent Crime in Chicago, Illinois, 2004–2014'
@@ -39,6 +48,8 @@ class App extends React.Component {
               <div className='sm-col sm-col-6 px2'>
                 <Chart
                   crime='homicide'
+                  data={dataHomicide}
+                  keys={keys}
                   year={year}
                   updateYear={this.updateYear}
                   title={`Homicide, ${year}`}
@@ -47,6 +58,8 @@ class App extends React.Component {
               <div className='sm-col sm-col-6 px2'>
                 <Chart
                   crime='rape'
+                  data={dataRape}
+                  keys={keys}
                   year={year}
                   updateYear={this.updateYear}
                   title={`Rape, ${year}`}
@@ -57,6 +70,8 @@ class App extends React.Component {
               <div className='sm-col sm-col-6 px2'>
                 <Chart
                   crime='robbery'
+                  data={dataRobbery}
+                  keys={keys}
                   year={year}
                   updateYear={this.updateYear}
                   title={`Robbery, ${year}`}
@@ -65,6 +80,8 @@ class App extends React.Component {
               <div className='sm-col sm-col-6 px2'>
                 <Chart
                   crime='aggravated assault'
+                  data={dataAggAssault}
+                  keys={keys}
                   year={year}
                   updateYear={this.updateYear}
                   title={`Aggravated Assault, ${year}`}

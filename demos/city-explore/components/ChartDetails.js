@@ -15,7 +15,6 @@ const getComparison = ({ place, data }) => {
   return 'lower than'
 }
 
-
 const ChartDetails = ({ colors, crime, data, keys, isMain, updateYear }) => {
   const { name, slug } = keys[0]
   const comparison = getComparison({ place: slug, data })

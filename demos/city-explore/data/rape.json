@@ -1,0 +1,182 @@
+[
+  {
+    "date": 2005,
+    "chicago": {
+      "count": 100,
+      "pop": 12826171,
+      "rate": 10
+    },
+    "illinois": {
+      "count": 0,
+      "pop": 12826171,
+      "rate": 0
+    },
+    "united-states": {
+      "count": 58479,
+      "pop": 301501908,
+      "rate": 19.395897156312525
+    }
+  },
+  {
+    "date": 2006,
+    "chicago": {
+      "count": 100,
+      "pop": 12826171,
+      "rate": 10
+    },
+    "illinois": {
+      "count": 246,
+      "pop": 12903652,
+      "rate": 1.9064370303848863
+    },
+    "united-states": {
+      "count": 58676,
+      "pop": 304525592,
+      "rate": 19.268002933559686
+    }
+  },
+  {
+    "date": 2007,
+    "chicago": {
+      "count": 100,
+      "pop": 12826171,
+      "rate": 10
+    },
+    "illinois": {
+      "count": 119,
+      "pop": 12923835,
+      "rate": 0.9207793197607367
+    },
+    "united-states": {
+      "count": 55564,
+      "pop": 306757776,
+      "rate": 18.113314265259245
+    }
+  },
+  {
+    "date": 2008,
+    "chicago": {
+      "count": 100,
+      "pop": 12826171,
+      "rate": 10
+    },
+    "illinois": {
+      "count": 131,
+      "pop": 12973710,
+      "rate": 1.0097343011366833
+    },
+    "united-states": {
+      "count": 54507,
+      "pop": 309327055,
+      "rate": 17.62115505868053
+    }
+  },
+  {
+    "date": 2009,
+    "chicago": {
+      "count": 100,
+      "pop": 12826171,
+      "rate": 10
+    },
+    "illinois": {
+      "count": 121,
+      "pop": 12965589,
+      "rate": 0.9332395157674672
+    },
+    "united-states": {
+      "count": 54304,
+      "pop": 312367926,
+      "rate": 17.384627383286464
+    }
+  },
+  {
+    "date": 2010,
+    "chicago": {
+      "count": 100,
+      "pop": 12826171,
+      "rate": 10
+    },
+    "illinois": {
+      "count": 634,
+      "pop": 12888247,
+      "rate": 4.919210502405797
+    },
+    "united-states": {
+      "count": 52306,
+      "pop": 314170775,
+      "rate": 16.64890695195949
+    }
+  },
+  {
+    "date": 2011,
+    "chicago": {
+      "count": 100,
+      "pop": 12826171,
+      "rate": 10
+    },
+    "illinois": {
+      "count": 620,
+      "pop": 12923112,
+      "rate": 4.79760602554555
+    },
+    "united-states": {
+      "count": 51027,
+      "pop": 317186963,
+      "rate": 16.087357285236216
+    }
+  },
+  {
+    "date": 2012,
+    "chicago": {
+      "count": 100,
+      "pop": 12826171,
+      "rate": 10
+    },
+    "illinois": {
+      "count": 539,
+      "pop": 12934012,
+      "rate": 4.1673070969781065
+    },
+    "united-states": {
+      "count": 52007,
+      "pop": 319697368,
+      "rate": 16.26757214967125
+    }
+  },
+  {
+    "date": 2013,
+    "chicago": {
+      "count": 100,
+      "pop": 12826171,
+      "rate": 10
+    },
+    "illinois": {
+      "count": 1864,
+      "pop": 12938533,
+      "rate": 14.406579169369511
+    },
+    "united-states": {
+      "count": 63964,
+      "pop": 321812692,
+      "rate": 19.876158271594832
+    }
+  },
+  {
+    "date": 2014,
+    "chicago": {
+      "count": 100,
+      "pop": 12826171,
+      "rate": 10
+    },
+    "illinois": {
+      "count": 2001,
+      "pop": 12938060,
+      "rate": 15.465997220603398
+    },
+    "united-states": {
+      "count": 73105,
+      "pop": 324698721,
+      "rate": 22.5147175741416
+    }
+  }
+]
