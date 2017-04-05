@@ -100,9 +100,6 @@ class App extends React.Component {
           selected={place}
           updatePlace={this.updatePlace}
         />
-        <div className='clearfix'>
-          <img className='right' width='95' src='legend.png' style={{ marginTop: -60 }} />
-        </div>
       </div>
     )
   }

@@ -101,6 +101,9 @@ class Map extends React.Component {
           </g>
         </svg>
         {hover ? <Hint {...hover} /> : null}
+        <div className='clearfix'>
+          <img className='right' width='95' src='legend.png' style={{ marginTop: -60 }} />
+        </div>
       </div>
     )
   }
