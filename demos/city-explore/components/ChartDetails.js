@@ -26,10 +26,11 @@ const ChartDetails = ({ colors, crime, data, keys, isMain, updateYear }) => {
     <div className='mb2 lg-flex'>
       {isMain && (
         <div className='flex-auto'>
-          <p className='mt1 mb3' style={{ paddingRight: 24 }}>
-            Chicago's {crime} rate was lower than that of the United States, and
-            in {highlight(year)} was {highlight(formatRate(rate))} incidents
-            per 100,000 people.
+          <p className='mt1 mb3 h5' style={{ paddingRight: 24 }}>
+            In {year}, Chicago’s {crime} rate was {formatRate(rate)} incidents
+            per 100,000 people, a rate higher than that of Illinois and that of the
+            United States. The rate at which violent crimes occurred in
+            Chicago is depicted below.
           </p>
           <select
             className='mb3 field bg-navy white'
