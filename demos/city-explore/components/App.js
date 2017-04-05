@@ -25,7 +25,7 @@ class App extends React.Component {
     return (
       <div className='clearfix'>
         <div className='p3 bg-navy' />
-        <div className='sm-col sm-col-3 p3'>
+        <div className='sm-col sm-col-3 px4 py3'>
           <img className='mb4' src='side-content.png' />
         </div>
         <div className='sm-col sm-col-9' style={{
@@ -52,7 +52,7 @@ class App extends React.Component {
                   keys={keys}
                   year={year}
                   updateYear={this.updateYear}
-                  title={`Homicide, ${year}`}
+                  title={`Homicide rates, ${year}`}
                 />
               </div>
               <div className='sm-col sm-col-6 px2'>
@@ -62,7 +62,7 @@ class App extends React.Component {
                   keys={keys}
                   year={year}
                   updateYear={this.updateYear}
-                  title={`Rape, ${year}`}
+                  title={`Rape rates, ${year}`}
                 />
               </div>
             </div>
@@ -74,7 +74,7 @@ class App extends React.Component {
                   keys={keys}
                   year={year}
                   updateYear={this.updateYear}
-                  title={`Robbery, ${year}`}
+                  title={`Robbery rates, ${year}`}
                 />
               </div>
               <div className='sm-col sm-col-6 px2'>
@@ -84,7 +84,7 @@ class App extends React.Component {
                   keys={keys}
                   year={year}
                   updateYear={this.updateYear}
-                  title={`Aggravated Assault, ${year}`}
+                  title={`Aggravated Assault rates, ${year}`}
                 />
               </div>
             </div>

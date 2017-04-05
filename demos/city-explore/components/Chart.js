@@ -136,7 +136,13 @@ class Chart extends React.Component {
 
     return (
       <div className={`mb3 sm-p4 bg-white ${isMain ? 'p3' : 'p2'}`}>
-        <h3 className={`mt0 mb3 ${isMain ? 'h2' : 'h3'}`}>{title}</h3>
+        {isMain && <h2 className='mt0 mb2'>{title}</h2>}
+        {!isMain && (
+          <h3 className='mt0 mb2'>
+            <img className='right' src='srs.png' width='20' />
+            {title}
+          </h3>
+        )}
         <ChartDetails
           colors={colors}
           crime={crime}
