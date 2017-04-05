@@ -4,7 +4,7 @@ const Hint = ({ value, position }) => {
   const width = 120
   const style = {
     left: position.x - (width / 2),
-    top: position.y + 20,
+    top: position.y + 75,
     width,
   }
 

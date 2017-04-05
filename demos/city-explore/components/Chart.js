@@ -12,6 +12,11 @@ import YAxis from './YAxis'
 const data = [
   {
     "date": 2004,
+    "chicago": {
+      "count": 488,
+      "pop": 12779604,
+      "rate": 2.8185846760196953
+    },
     "illinois": {
       "count": 488,
       "pop": 12779604,
@@ -25,6 +30,11 @@ const data = [
   },
   {
     "date": 2005,
+    "chicago": {
+      "count": 492,
+      "pop": 12826171,
+      "rate": 1.235907068446226
+    },
     "illinois": {
       "count": 492,
       "pop": 12826171,
@@ -38,6 +48,11 @@ const data = [
   },
   {
     "date": 2006,
+    "chicago": {
+      "count": 551,
+      "pop": 12903652,
+      "rate": 3.270108958301107
+    },
     "illinois": {
       "count": 551,
       "pop": 12903652,
@@ -51,6 +66,11 @@ const data = [
   },
   {
     "date": 2007,
+    "chicago": {
+      "count": 576,
+      "pop": 12923835,
+      "rate": 5.456881413295666
+    },
     "illinois": {
       "count": 576,
       "pop": 12923835,
@@ -64,6 +84,11 @@ const data = [
   },
   {
     "date": 2008,
+    "chicago": {
+      "count": 584,
+      "pop": 12973710,
+      "rate": 3.501410930258191
+    },
     "illinois": {
       "count": 584,
       "pop": 12973710,
@@ -77,6 +102,11 @@ const data = [
   },
   {
     "date": 2009,
+    "chicago": {
+      "count": 541,
+      "pop": 12965589,
+      "rate": 4.972583289505783
+    },
     "illinois": {
       "count": 541,
       "pop": 12965589,
@@ -90,6 +120,11 @@ const data = [
   },
   {
     "date": 2010,
+    "chicago": {
+      "count": 524,
+      "pop": 12888247,
+      "rate": 2.065719721231289
+    },
     "illinois": {
       "count": 524,
       "pop": 12888247,
@@ -103,6 +138,11 @@ const data = [
   },
   {
     "date": 2011,
+    "chicago": {
+      "count": 570,
+      "pop": 12923112,
+      "rate": 2.410702313808005
+    },
     "illinois": {
       "count": 570,
       "pop": 12923112,
@@ -116,6 +156,11 @@ const data = [
   },
   {
     "date": 2012,
+    "chicago": {
+      "count": 590,
+      "pop": 12934012,
+      "rate": 3.561616302814625
+    },
     "illinois": {
       "count": 590,
       "pop": 12934012,
@@ -129,6 +174,11 @@ const data = [
   },
   {
     "date": 2013,
+    "chicago": {
+      "count": 516,
+      "pop": 12938533,
+      "rate": 1.9880873666280405
+    },
     "illinois": {
       "count": 516,
       "pop": 12938533,
@@ -142,6 +192,11 @@ const data = [
   },
   {
     "date": 2014,
+    "chicago": {
+      "count": 492,
+      "pop": 12938060,
+      "rate": 2.8027339492937893
+    },
     "illinois": {
       "count": 492,
       "pop": 12938060,
@@ -156,6 +211,10 @@ const data = [
 ]
 
 const keysWithSlugs = [
+  {
+    "name": "Chicago",
+    "slug": "chicago"
+  },
   {
     "name": "Illinois",
     "slug": "illinois"

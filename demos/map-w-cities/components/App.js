@@ -2,6 +2,11 @@ import React from 'react'
 
 import Map from './Map'
 
+import data from '../data/participation.json'
+
+
+const slugify = str => str.toLowerCase().replace(/\s+/g, '-')
+const lookup = state => data[slugify(state)]
 const stateNames = [
   "Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut",
   "Delaware","District of Columbia","Florida","Georgia","Hawaii","Idaho",
@@ -25,30 +30,29 @@ const cityNames = [
   "Washington, D.C., District of Columbia"
 ]
 
-class App extends React.Component {
-  state = {
-    place: '',
-  }
 
-  handleChange = e => {
-    this.setState({ place: e.target.value })
-  }
+class App extends React.Component {
+  state = { crime: '', place: '' }
 
   updatePlace = place => {
     this.setState({ place })
   }
 
+  updateCrime = crime => {
+    this.setState({ crime })
+  }
+
   render() {
-    const { place } = this.state
+    const { crime, place } = this.state
 
     return (
-      <div className='container px2' style={{ maxWidth: 800 }}>
+      <div className='container px2' style={{ maxWidth: 800, minHeight: 1000 }}>
         <h1 className='mb3'>Explore by location and type of crime</h1>
         <div className='clearfix mxn2'>
           <div className='sm-col sm-col-4 px2'>
             <select
               className='mb1 sm-m0 col-12 field'
-              onChange={this.handleChange}
+              onChange={e => this.updatePlace(e.target.value)}
               value={place}
             >
               <option value='' disabled>Select a state or city</option>
@@ -61,7 +65,11 @@ class App extends React.Component {
             </select>
           </div>
           <div className='sm-col sm-col-4 px2'>
-            <select className='mb1 sm-m0 col-12 field' defaultValue=''>
+            <select
+              className='mb1 sm-m0 col-12 field'
+              onChange={e => this.updateCrime(e.target.value)}
+              value={crime}
+            >
               <option value='' disabled>Select a crime type</option>
               <optgroup label='Violent Crime'>
                 <option value='violent-crime'>All Violent Crime</option>
@@ -80,7 +88,12 @@ class App extends React.Component {
             </select>
           </div>
           <div className='sm-col sm-col-4 px2'>
-            <button className='mb1 sm-m0 btn btn-primary bg-navy col-12'>View results</button>
+            <button
+              className='mb1 sm-m0 btn btn-primary bg-navy col-12'
+              disabled={place === '' || crime === ''}
+            >
+              View results
+            </button>
           </div>
         </div>
         <Map
