@@ -30,39 +30,44 @@ class App extends React.Component {
             <img className='mt2 mb4' src='top-content.png' />
             <Chart
               isMain
-              crime='foo'
+              crime='violent crime'
               year={year}
               updateYear={this.updateYear}
+              title='Violent Crime in Chicago, Illinois, 2004–2014'
             />
             <div className='clearfix mxn2'>
               <div className='sm-col sm-col-6 px2'>
                 <Chart
-                  crime='foo'
+                  crime='homicide'
                   year={year}
                   updateYear={this.updateYear}
+                  title={`Homicide, ${year}`}
                 />
               </div>
               <div className='sm-col sm-col-6 px2'>
                 <Chart
-                  crime='foo'
+                  crime='rape'
                   year={year}
                   updateYear={this.updateYear}
+                  title={`Rape, ${year}`}
                 />
               </div>
             </div>
             <div className='clearfix mxn2'>
               <div className='sm-col sm-col-6 px2'>
                 <Chart
-                  crime='foo'
+                  crime='robbery'
                   year={year}
                   updateYear={this.updateYear}
+                  title={`Robbery, ${year}`}
                 />
               </div>
               <div className='sm-col sm-col-6 px2'>
                 <Chart
-                  crime='foo'
+                  crime='aggravated assault'
                   year={year}
                   updateYear={this.updateYear}
+                  title={`Aggravated Assault, ${year}`}
                 />
               </div>
             </div>

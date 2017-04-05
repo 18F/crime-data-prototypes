@@ -16,7 +16,7 @@ const getComparison = ({ place, data }) => {
 }
 
 
-const ChartDetails = ({ colors, crime, data, keys, isMain }) => {
+const ChartDetails = ({ colors, crime, data, keys, isMain, updateYear }) => {
   const { name, slug } = keys[0]
   const comparison = getComparison({ place: slug, data })
   const rate = data[slug].rate
@@ -27,16 +27,36 @@ const ChartDetails = ({ colors, crime, data, keys, isMain }) => {
     <div className='mb2 lg-flex'>
       {isMain && (
         <div className='flex-auto'>
-          <h4 className='mt0 mb1 fs-18 sans-serif'>{year}</h4>
-          <p className='mb1 lg-m0 lg-pr4 lg-mh-72p fs-14 sm-fs-16'>
+          <p className='mt1 mb3' style={{ paddingRight: 24 }}>
             Chicago's {crime} rate was lower than that of the United States, and
             in {highlight(year)} was {highlight(formatRate(rate))} incidents
             per 100,000 people.
           </p>
+          <select
+            className='mb3 field bg-navy white'
+            style={{ minWidth: 160 }}
+            onChange={e => updateYear(Number(e.target.value))}
+            value={year}
+          >
+            <option>2004</option>
+            <option>2005</option>
+            <option>2006</option>
+            <option>2007</option>
+            <option>2008</option>
+            <option>2009</option>
+            <option>2010</option>
+            <option>2011</option>
+            <option>2012</option>
+            <option>2013</option>
+            <option>2014</option>
+          </select>
         </div>
       )}
       <div>
-        <table className='mb1 lg-m0' style={{ maxWidth: 300 }}>
+        <table
+          className={`mb1 lg-m0 ${isMain ? 'px1 py2 bg-light-blue' : ''}`}
+          style={{ maxWidth: 300 }}
+        >
           <thead className='fs-12 line-height-3'>
             <tr><td /><td>Rate</td><td>Total</td></tr>
           </thead>

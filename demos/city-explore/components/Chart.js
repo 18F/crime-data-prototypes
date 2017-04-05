@@ -266,7 +266,7 @@ class Chart extends React.Component {
   }
 
   render() {
-    const { crime, colors, size, isMain, year } = this.props
+    const { crime, colors, size, isMain, year, title, updateYear } = this.props
     const { hover, svgParentWidth } = this.state
 
     const color = scaleOrdinal(colors)
@@ -349,33 +349,15 @@ class Chart extends React.Component {
 
     return (
       <div className={`mb3 sm-p4 bg-white ${isMain ? 'p3' : 'p2'}`}>
+        <h3 className={`mt0 mb3 ${isMain ? 'h2' : 'h3'}`}>{title}</h3>
         <ChartDetails
           colors={colors}
           crime={crime}
           data={active}
           keys={keysWithSlugs}
           isMain={isMain}
+          updateYear={updateYear}
         />
-        {isMain && (
-          <select
-            className='mb3 field bg-navy white'
-            style={{ minWidth: 160 }}
-            onChange={e => this.props.updateYear(Number(e.target.value))}
-            value={year}
-          >
-            <option>2004</option>
-            <option>2005</option>
-            <option>2006</option>
-            <option>2007</option>
-            <option>2008</option>
-            <option>2009</option>
-            <option>2010</option>
-            <option>2011</option>
-            <option>2012</option>
-            <option>2013</option>
-            <option>2014</option>
-          </select>
-        )}
         <div
           className='col-12'
           ref={ref => this.svgParent = ref}
@@ -412,22 +394,20 @@ class Chart extends React.Component {
             </g>
           </svg>
         </div>
-        <div className='mt1 h6 monospace center'>
+        <div className='mt1 mb2 fs-10 monospace center'>
           <div className='bold monospace'>Rate per 100,000 people</div>
         </div>
-        {isMain && (
-          <button className="btn p0 fs-12 navy nowrap">
-            <img
-              className="mr1"
-              style={{ verticalAlign: 'text-bottom' }}
-              width="15"
-              height="14"
-              src="download.svg"
-              alt="download"
-            />
-            Download data
-          </button>
-        )}
+        <button className="btn p0 fs-12 navy nowrap">
+          <img
+            className="mr1"
+            style={{ verticalAlign: 'text-bottom' }}
+            width="15"
+            height="14"
+            src="download.svg"
+            alt="download"
+          />
+          Download data
+        </button>
       </div>
     )
   }
