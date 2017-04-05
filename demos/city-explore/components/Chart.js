@@ -348,7 +348,7 @@ class Chart extends React.Component {
     )
 
     return (
-      <div className='mb3 px2 py3 sm-p4 bg-white'>
+      <div className={`mb3 sm-p4 bg-white ${isMain ? 'p3' : 'p2'}`}>
         <ChartDetails
           colors={colors}
           crime={crime}
@@ -415,6 +415,19 @@ class Chart extends React.Component {
         <div className='mt1 h6 monospace center'>
           <div className='bold monospace'>Rate per 100,000 people</div>
         </div>
+        {isMain && (
+          <button className="btn p0 fs-12 navy nowrap">
+            <img
+              className="mr1"
+              style={{ verticalAlign: 'text-bottom' }}
+              width="15"
+              height="14"
+              src="download.svg"
+              alt="download"
+            />
+            Download data
+          </button>
+        )}
       </div>
     )
   }
