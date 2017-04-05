@@ -135,8 +135,8 @@ class Chart extends React.Component {
     )
 
     return (
-      <div className={`mb3 sm-p4 bg-white ${isMain ? 'p3' : 'p2'}`}>
-        {isMain && <h2 className='mt0 mb2'>{title}</h2>}
+      <div className={`mb3 bg-white ${isMain ? 'p3' : 'p2'}`}>
+        {isMain && <h2 className='mt1 mb2'>{title}</h2>}
         {!isMain && (
           <h3 className='mt0 mb2'>
             <img className='right' src='srs.png' width='20' />
@@ -190,17 +190,44 @@ class Chart extends React.Component {
         <div className='mt1 mb2 fs-10 monospace center'>
           <div className='bold monospace'>Rate per 100,000 people</div>
         </div>
-        <button className="btn p0 fs-12 navy nowrap">
-          <img
-            className="mr1"
-            style={{ verticalAlign: 'text-bottom' }}
-            width="15"
-            height="14"
-            src="download.svg"
-            alt="download"
-          />
-          Download data
-        </button>
+        {isMain && (
+          <div className='clearfix'>
+            <button className="left btn p0 fs-12 nowrap" style={{ color: '#7E97AC' }}>
+              <img
+                className="mr1"
+                style={{ verticalAlign: 'middle' }}
+                width="20"
+                src="srs.png"
+                alt="download"
+              />
+              <span className='border-bottom-dashed'>Summary SRS Data</span>
+            </button>
+            <button className="right btn p0 fs-12 navy nowrap">
+              <img
+                className="mr1"
+                style={{ verticalAlign: 'text-bottom' }}
+                width="15"
+                height="14"
+                src="download.svg"
+                alt="download"
+              />
+              Download data
+            </button>
+          </div>
+        )}
+        {!isMain && (
+          <button className="btn p0 fs-12 navy nowrap">
+            <img
+              className="mr1"
+              style={{ verticalAlign: 'text-bottom' }}
+              width="15"
+              height="14"
+              src="download.svg"
+              alt="download"
+            />
+            Download data
+          </button>
+        )}
       </div>
     )
   }
