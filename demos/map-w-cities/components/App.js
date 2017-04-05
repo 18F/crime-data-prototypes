@@ -2,11 +2,7 @@ import React from 'react'
 
 import Map from './Map'
 
-import data from '../data/participation.json'
 
-
-const slugify = str => str.toLowerCase().replace(/\s+/g, '-')
-const lookup = state => data[slugify(state)]
 const stateNames = [
   "Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut",
   "Delaware","District of Columbia","Florida","Georgia","Hawaii","Idaho",
