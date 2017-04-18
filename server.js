@@ -4,6 +4,7 @@ const path = require('path')
 const basicAuth = require('basic-auth-connect')
 const cfenv = require('cfenv')
 const express = require('express')
+const gzipStatic = require('connect-gzip-static')
 
 const app = express()
 
@@ -12,7 +13,7 @@ const credService = env.getService('crime-data-api-creds') || { credentials: {} 
 const username = credService.credentials["HTTP_BASIC_USERNAME"]
 const password = credService.credentials["HTTP_BASIC_PASSWORD"]
 
-app.use(express.static(__dirname))
+app.use(gzipStatic(__dirname))
 
 if (process.env.NODE_ENV === 'production') {
   app.use(basicAuth(username, password))
