@@ -122,8 +122,9 @@ class App extends React.Component {
           </select>
           {(hasSearch && !selected) ? (
             <p className='mb1 fs-13 italic'>
-              There are <strong>{dataFiltered.length}</strong> agencies
-              within your search. Select one to view or{' '}
+              Your search returned <strong>{dataFiltered.length}</strong>{' '}
+              {dataFiltered.length === 1 ? 'agency' : 'agencies'}.
+              Select one to view or{' '}
               <a
                 className='navy underline'
                 href='#!'
@@ -134,8 +135,8 @@ class App extends React.Component {
             </p>
           ) : (
             <p className='mb1 fs-13 italic'>
-              Search by law enforcement agency name  or type,
-              city, and county.
+              Search by agency name, city, county, or type of law
+              enforcement agency, such as sheriff's department or highway patrol.
             </p>
           )}
           {selected ? (
