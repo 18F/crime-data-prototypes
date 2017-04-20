@@ -5,11 +5,19 @@ import RefineBox from './RefineBox'
 import Table from './Table'
 
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
+const matches = (a, b) => a.toUpperCase().includes(b.toUpperCase())
 
 const imgs = {
   trend: 'Trend, no NIBRS',
   table: 'Table, no NIBRS',
   details: 'NIBRS charts',
+}
+
+const refinements = {
+  agency_name: '',
+  agency_type: '',
+  city_name: '',
+  county_name: '',
 }
 
 class App extends React.Component {
@@ -19,13 +27,14 @@ class App extends React.Component {
     selected: null,
     isFetching: true,
     refine: false,
+    ...refinements
   }
 
   componentDidMount() {
-    axios.get('/data/ori.json')
+    axios.get('data/agencies.json')
       .then(response => response.data)
       .then(data => this.setState({
-        data: data.filter(d => d['ORI9'].slice(0, 2) === 'OH'),
+        data,
         isFetching: false
       }))
       .catch(error => console.log(error))
@@ -40,40 +49,72 @@ class App extends React.Component {
     this.setState({ selected: datum })
   }
 
-  refineClick = e => {
+  refineToggle = e => {
     e.preventDefault()
-    this.setState({ refine: true })
+    this.setState(prevState => ({ refine: !prevState.refine }))
+  }
+
+  refineSubmit = () => {
+    this.setState({ refine: false })
+  }
+
+  refineClear = () => {
+    this.setState({ ...refinements })
+  }
+
+  refineInputHandler = e => {
+    const { name, value } = e.target
+    this.setState({ [name]: value })
   }
 
   removeSelection = () => {
-    this.setState({ selected: null, search: '' })
+    this.setState({ selected: null, search: '', ...refinements })
   }
 
   render() {
-    const { data, search, selected, isFetching, refine } = this.state
+    const {
+      data, search, selected, isFetching, refine,
+      agency_name, agency_type, city_name, county_name,
+    } = this.state
+
+    const showImg = Object.keys(imgs).includes(search)
+    const [x, y] = [rand(60, 160), rand(40, 120)]
+    const hasRefinement = agency_name || agency_type || city_name || county_name
 
     const searchUpper = search.toUpperCase()
-    const dataFiltered = data.filter(d => {
+    let dataFiltered = data.filter(d => {
       const words = `
-        ${d['NAME']} ${d['COUNTYNAME']} ${d['STATENAME']}
-        ${d['ADDRESS_ZIP']} ${d['ADDRESS_CITY']}
+        ${d['agency_name']} ${d['agency_type']}
+        ${d['city_name']} ${d['county_name']}
       `.toUpperCase()
 
       return words.includes(searchUpper)
     })
-    const showOris = searchUpper.length >= 3 && dataFiltered.length > 0
-    const showImg = Object.keys(imgs).includes(search)
-    const [x, y] = [rand(60, 160), rand(40, 120)]
+
+    // TODO: refactor this gross bit
+    if (hasRefinement) {
+      dataFiltered = dataFiltered.filter(d => (
+        (!agency_name || (
+          matches(d.agency_name, agency_name) || matches(d.ori, agency_name)
+        )) &&
+        matches(d.agency_type, agency_type) &&
+        matches(d.city_name, city_name) &&
+        matches(d.county_name, county_name)
+      ))
+    }
+
+    const hasSearch = searchUpper.length || hasRefinement
+    const showOris = hasSearch && dataFiltered.length > 0
 
     return (
       <div className='clearfix'>
         <div className='sm-col sm-col-3 p3 bg-white'>
           <h3 className='mt0 h2 navy'>Location</h3>
           <div className='relative'>
-            <img src='ohio.png' />
+            <img src='new-jersey.png' />
             {selected && (
               <img
-                className='absolute animated bounce'
+                className='absolute'
                 src='pin.svg'
                 style={{ left: x, top: y }}
               />
@@ -82,20 +123,20 @@ class App extends React.Component {
           <select className='mt2 mb3 col-12 field bg-navy white'>
             <option>New Jersey</option>
           </select>
-          {(showOris && !selected) ? (
-            <p className='mb1 h5 italic'>
+          {(hasSearch && !selected) ? (
+            <p className='mb1 fs-13 italic'>
               There are <strong>{dataFiltered.length}</strong> agencies
               within your search. Select one to view or{' '}
               <a
                 className='navy underline'
                 href='#!'
-                onClick={this.refineClick}
+                onClick={this.refineToggle}
               >
                 refine your results
               </a>.
             </p>
           ) : (
-            <p className='mb1 h5 italic'>
+            <p className='mb1 fs-13 italic'>
               Search by law enforcement agency name  or type,
               city, and county.
             </p>
@@ -104,13 +145,14 @@ class App extends React.Component {
             <div className="flex mb2">
               <input
                 type="text"
-                className="flex-auto m0 h6 monospace field rounded-left"
+                className="flex-auto m0 h5 field rounded-left"
                 placeholder="Search"
-                value={`${selected['ORI9']} ${selected['NAME']}`}
+                defaultValue={selected['agency_name']}
               />
 
               <button
                 className="btn rounded-right border"
+                style={{ borderLeft: 0 }}
                 onClick={this.removeSelection}
               >
                 ✕
@@ -118,38 +160,57 @@ class App extends React.Component {
             </div>
           ) : (
             <div className='relative'>
-              <input
-                type="text"
-                className='m0 col-12 field'
-                placeholder='Enter location or zip code'
-                value={search}
-                onChange={this.handleChange}
-              />
+              <div className="flex">
+                <input
+                  type="text"
+                  className="flex-auto m0 h5 field rounded-left"
+                  placeholder='Search'
+                  value={search}
+                  onChange={this.handleChange}
+                />
+                <button
+                  className="btn rounded-right border"
+                  style={{ borderLeft: 0 }}
+                  onClick={this.refineToggle}
+                >
+                  <img src='chevron.png' width='13' />
+                </button>
+              </div>
               {showOris && (
                 <ul
-                  className="mb2 absolute h6 list-reset col-12 border-box bg-white border overflow-auto"
+                  className="mt05 mb2 absolute h5 list-reset col-12 border-box bg-white border rounded overflow-auto"
                   style={{ maxHeight: 240 }}
                 >
                   {dataFiltered.slice(0, 100).map((d, i) => (
                     <li key={i} className="">
                       <a
-                        className='btn p0 px1 block regular truncate'
+                        className='px1 block black truncate'
+                        style={{ lineHeight: '1.75' }}
                         href='#!'
                         onClick={this.handleClick(d)}
                       >
-                        {d['NAME']}
+                        {d['agency_name']}
                       </a>
                     </li>  
                   ))}
                 </ul>
               )}
-              {refine && <RefineBox />}
+              {refine && (
+                <RefineBox
+                  agency_name={agency_name}
+                  agency_type={agency_type}
+                  city_name={city_name}
+                  county_name={county_name}
+                  onClear={this.refineClear}
+                  onChange={this.refineInputHandler}
+                  onSubmit={this.refineSubmit}
+                />
+              )}
             </div>
           )}
           <img className='mt3' src='sidebar-bottom.png' />
         </div>
         <div className='sm-col sm-col-9' style={{ minHeight: 1000 }}>
-          {isFetching ? 'ORI data loading...' : null}
           {showImg && (
             <img src={`${imgs[search]}.png`} />
           )}
