@@ -2,9 +2,7 @@ import axios from 'axios'
 import React from 'react'
 
 import RefineBox from './RefineBox'
-import Table from './Table'
 
-const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 const matches = (a, b) => a.toUpperCase().includes(b.toUpperCase())
 
 const imgs = {
@@ -78,7 +76,6 @@ class App extends React.Component {
     } = this.state
 
     const showImg = Object.keys(imgs).includes(search)
-    const [x, y] = [rand(60, 160), rand(40, 120)]
     const hasRefinement = agency_name || agency_type || city_name || county_name
 
     const searchUpper = search.toUpperCase()
@@ -116,7 +113,7 @@ class App extends React.Component {
               <img
                 className='absolute'
                 src='pin.svg'
-                style={{ left: x, top: y }}
+                style={{ left: 130, top: 25 }}
               />
             )}
           </div>
@@ -176,6 +173,14 @@ class App extends React.Component {
                   <img src='chevron.png' width='13' />
                 </button>
               </div>
+              {hasRefinement && (
+                <div
+                  className='absolute h6 right-align bg-white border rounded'
+                  style={{ top: 9, right: 52, padding: '2px 4px', lineHeight: '1' }}
+                >
+                  + {[agency_name, agency_type, city_name, county_name].join(' ')}
+                </div>
+              )}
               {showOris && (
                 <ul
                   className="mt05 mb2 absolute h5 list-reset col-12 border-box bg-white border rounded overflow-auto"
