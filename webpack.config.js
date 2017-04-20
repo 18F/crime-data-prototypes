@@ -4,6 +4,7 @@ var webpack = require('webpack')
 var config = {
   context: path.join(__dirname, 'demos'),
   entry: {
+    'agency-search': './agency-search/index.js',
     'city-explore': './city-explore/index.js',
     'map-w-cities': './map-w-cities/index.js',
     ori: './ori/index.js',
