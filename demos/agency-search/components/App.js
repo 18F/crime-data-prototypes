@@ -104,122 +104,131 @@ class App extends React.Component {
     const showOris = hasSearch && dataFiltered.length > 0
 
     return (
-      <div className='clearfix'>
-        <div className='sm-col sm-col-3 p3 bg-white'>
-          <h3 className='mt0 h2 navy'>Location</h3>
-          <div className='relative'>
-            <img src='new-jersey.png' />
-            {selected && (
-              <img
-                className='absolute'
-                src='pin.svg'
-                style={{ left: 130, top: 25 }}
-              />
-            )}
-          </div>
-          <select className='mt2 mb3 col-12 field bg-navy white'>
-            <option>New Jersey</option>
-          </select>
-          {(hasSearch && !selected) ? (
-            <p className='mb1 fs-13 italic'>
-              Your search returned <strong>{dataFiltered.length}</strong>{' '}
-              {dataFiltered.length === 1 ? 'agency' : 'agencies'}.
-              Select one to view or{' '}
-              <a
-                className='navy underline'
-                href='#!'
-                onClick={this.refineToggle}
-              >
-                refine your results
-              </a>.
-            </p>
-          ) : (
-            <p className='mb1 fs-13 italic'>
-              Search by agency name, city, county, or type of law
-              enforcement agency, such as sheriff's department or highway patrol.
-            </p>
-          )}
-          {selected ? (
-            <div className="flex mb2">
-              <input
-                type="text"
-                className="flex-auto m0 h5 field rounded-left"
-                placeholder="Search"
-                defaultValue={selected['agency_name']}
-              />
-
-              <button
-                className="btn rounded-right border"
-                style={{ borderLeft: 0 }}
-                onClick={this.removeSelection}
-              >
-                ✕
-              </button>
-            </div>
-          ) : (
+      <div>
+        <div className='p2 bg-navy' />
+        <div className='flex'>
+          <div
+            className='flex-none bg-white border-box'
+            style={{ width: 320, padding: 48 }}
+          >
+            <h3 className='mt1 h2 navy' style={{ fontSize: 22 }}>Location</h3>
             <div className='relative'>
-              <div className="flex">
+              <img src='new-jersey.png' />
+              {selected && (
+                <img
+                  className='absolute'
+                  src='pin.svg'
+                  style={{ left: 130, top: 25 }}
+                />
+              )}
+            </div>
+            <select className='mt2 mb2 col-12 field bg-navy white'>
+              <option>New Jersey</option>
+            </select>
+            {(hasSearch && !selected) ? (
+              <p className='mt1 mb2 fs-12 serif italic'>
+                Your search returned <strong>{dataFiltered.length}</strong>{' '}
+                {dataFiltered.length === 1 ? 'agency' : 'agencies'}.
+                Select one to view or{' '}
+                <a
+                  className='navy underline'
+                  href='#!'
+                  onClick={this.refineToggle}
+                >
+                  refine your results
+                </a>.
+              </p>
+            ) : (
+              <p className='mt1 mb2 fs-12 serif italic'>
+                Search by agency name, city, county, or type of law enforcement agency.
+              </p>
+            )}
+            {selected ? (
+              <div className="flex mb2">
                 <input
                   type="text"
                   className="flex-auto m0 h5 field rounded-left"
-                  placeholder='Search'
-                  value={search}
-                  onChange={this.handleChange}
+                  placeholder="Search"
+                  defaultValue={selected['agency_name']}
                 />
+
                 <button
                   className="btn rounded-right border"
                   style={{ borderLeft: 0 }}
-                  onClick={this.refineToggle}
+                  onClick={this.removeSelection}
                 >
-                  <img src='chevron.png' width='13' />
+                  ✕
                 </button>
               </div>
-              {hasRefinement && (
-                <div
-                  className='absolute h6 right-align bg-white border rounded'
-                  style={{ top: 9, right: 52, padding: '2px 4px', lineHeight: '1' }}
-                >
-                  + {[agency_name, agency_type, city_name, county_name].join(' ')}
+            ) : (
+              <div className='relative'>
+                <div className="flex">
+                  <input
+                    type="text"
+                    className="flex-auto m0 h5 field rounded-left"
+                    placeholder='Search'
+                    value={search}
+                    onChange={this.handleChange}
+                  />
+                  {!refine && (
+                    <button
+                      className="btn rounded-right border"
+                      style={{ borderLeft: 0 }}
+                      onClick={this.refineToggle}
+                    >
+                      <img src='chevron.png' width='13' />
+                    </button>
+                  )}
                 </div>
-              )}
-              {showOris && (
-                <ul
-                  className="mt05 mb2 absolute h5 list-reset col-12 border-box bg-white border rounded overflow-auto"
-                  style={{ maxHeight: 240 }}
-                >
-                  {dataFiltered.slice(0, 100).map((d, i) => (
-                    <li key={i} className="">
-                      <a
-                        className='px1 block black truncate'
-                        style={{ lineHeight: '1.75' }}
-                        href='#!'
-                        onClick={this.handleClick(d)}
-                      >
-                        {d['agency_name']}
-                      </a>
-                    </li>  
-                  ))}
-                </ul>
-              )}
-              {refine && (
-                <RefineBox
-                  agency_name={agency_name}
-                  agency_type={agency_type}
-                  city_name={city_name}
-                  county_name={county_name}
-                  onClear={this.refineClear}
-                  onChange={this.refineInputHandler}
-                  onSubmit={this.refineSubmit}
-                />
-              )}
-            </div>
-          )}
-          <img className='mt3' src='sidebar-bottom.png' />
-        </div>
-        <div className='sm-col sm-col-9' style={{ minHeight: 1000 }}>
-          {showImg && (
-            <img src={`${imgs[search]}.png`} />
-          )}
+                {hasRefinement && (
+                  <div
+                    className='mtn1 absolute h6 bg-white muted rounded'
+                    style={{ top: 11, left: 70, padding: '2px 4px', lineHeight: '1' }}
+                  >
+                    + {[agency_name, agency_type, city_name, county_name].join(' ')}
+                  </div>
+                )}
+                {showOris && (
+                  <ul
+                    className="mtn1 mb2 absolute h5 list-reset col-12 border-box bg-white border rounded overflow-auto"
+                    style={{ maxHeight: 240 }}
+                  >
+                    {dataFiltered.slice(0, 100).map((d, i) => (
+                      <li key={i} className="">
+                        <a
+                          className='px1 block black truncate'
+                          style={{ lineHeight: '1.75' }}
+                          href='#!'
+                          onClick={this.handleClick(d)}
+                        >
+                          {d['agency_name']}
+                        </a>
+                      </li>  
+                    ))}
+                  </ul>
+                )}
+                {refine && (
+                  <RefineBox
+                    agency_name={agency_name}
+                    agency_type={agency_type}
+                    city_name={city_name}
+                    county_name={county_name}
+                    onClear={this.refineClear}
+                    onChange={this.refineInputHandler}
+                    onSubmit={this.refineSubmit}
+                    onClose={this.refineToggle}
+                  />
+                )}
+              </div>
+            )}
+            <img src='sidebar-bottom.png' style={{ marginTop: 48 }} />
+          </div>
+          <div className='flex-auto mt1 px4 py3' style={{ minHeight: 1000 }}>
+            {showImg && (
+              <img src={`${imgs[search]}.png`} />
+            )}
+            <img src='content.png' />
+          </div>
         </div>
       </div>
     )

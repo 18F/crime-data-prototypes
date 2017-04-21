@@ -8,11 +8,19 @@ const RefineBox = ({
   onClear,
   onChange,
   onSubmit,
+  onClose,
 }) => (
   <div
-    className='mt05 p2 absolute col-12 border-box bg-white border rounded'
+    className='mtn1 p2 absolute col-12 border-box bg-white border rounded'
     style={{ minHeight: 280 }}
   >
+    <button
+      className='absolute btn p0 h6'
+      style={{ top: 4, right: 4 }}
+      onClick={onClose}
+    >
+      ✕
+    </button>
     <label className='mb05 h5 bold block'>Agency name / ORI number</label>
     <input
       className='mb2 col-12 field'
@@ -51,7 +59,7 @@ const RefineBox = ({
 
     <div className='mt1 clearfix'>
       <div className='left'>
-        <button className='btn px0 navy underline' onClick={onClear}>
+        <button className='btn px0 navy h5 regular underline' onClick={onClear}>
           Clear
         </button>
       </div>
