@@ -103,6 +103,11 @@ class App extends React.Component {
     const hasSearch = searchUpper.length || hasRefinement
     const showOris = hasSearch && dataFiltered.length > 0
 
+    const tags = [agency_name, agency_type, city_name, county_name]
+      .filter(t => t.length)
+      .map(t => `+${t}`)
+      .join(' ')
+
     return (
       <div>
         <div className='p2 bg-navy' />
@@ -129,9 +134,9 @@ class App extends React.Component {
               <p className='mt1 mb2 fs-12 serif italic'>
                 Your search returned <strong>{dataFiltered.length}</strong>{' '}
                 {dataFiltered.length === 1 ? 'agency' : 'agencies'}.
-                Select one to view or{' '}
+                Select one or{' '}
                 <a
-                  className='navy underline'
+                  className='navy bold underline'
                   href='#!'
                   onClick={this.refineToggle}
                 >
@@ -185,7 +190,7 @@ class App extends React.Component {
                     className='mtn1 absolute h6 bg-white muted rounded'
                     style={{ top: 11, left: 70, padding: '2px 4px', lineHeight: '1' }}
                   >
-                    + {[agency_name, agency_type, city_name, county_name].join(' ')}
+                    {tags}
                   </div>
                 )}
                 {showOris && (
