@@ -118,7 +118,7 @@ class App extends React.Component {
                 <img
                   className='absolute'
                   src='pin.svg'
-                  style={{ left: 130, top: 25 }}
+                  style={{ left: 115, top: 25 }}
                 />
               )}
             </div>
@@ -227,7 +227,7 @@ class App extends React.Component {
             {showImg && (
               <img src={`${imgs[search]}.png`} />
             )}
-            <img src='content.png' />
+            {selected && <img src='content.png' />}
           </div>
         </div>
       </div>
