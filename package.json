@@ -9,7 +9,7 @@
     "start": "node server.js"
   },
   "engines": {
-    "node": "6.10.x"
+    "node": "6.11.x"
   },
   "dependencies": {
     "axios": "^0.15.3",
@@ -40,10 +40,6 @@
     "webpack-dev-server": "^2.4.2"
   },
   "babel": {
-    "presets": [
-      "es2015",
-      "stage-0",
-      "react"
-    ]
+    "presets": ["es2015", "stage-0", "react"]
   }
 }
